@@ -1,1 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUNNLORN — Official Website</title>
+<meta name="theme-color" content="#10051f">
+<meta name="description" content="Официальный сайт Funnlorn. Стримы, жизнь и творчество.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--purple:#a855f7;--pink:#ed8bff;--bg:#10051f}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:white;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 15% 20%,#7025a044,transparent 45%),radial-gradient(ellipse at 85% 70%,#b32bff24,transparent 45%)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:25px 8%;border-bottom:1px solid #ffffff12}
+.logo{font-size:23px;font-weight:900;letter-spacing:3px}
+.logo span{color:var(--pink)}
+nav a{color:#ddd;text-decoration:none;font-size:13px;margin-left:22px}
+nav a:hover{color:var(--pink)}
+.hero{min-height:78vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:70px 20px}
+.tag{border:1px solid #c56aff66;border-radius:30px;padding:10px 17px;color:#e3b7ff;font-size:11px;letter-spacing:3px;margin-bottom:30px}
+h1{font-size:clamp(55px,13vw,125px);font-weight:1000;letter-spacing:-5px;line-height:1;background:linear-gradient(110deg,#fff,#e7b4ff 40%,#a855f7 75%,#fff);background-size:200% auto;color:transparent;background-clip:text;-webkit-background-clip:text;animation:shine 5s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+.hero p{color:#b9afc5;font-size:16px;line-height:1.8;margin:27px 0;max-width:460px}
+.buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.btn{padding:15px 23px;border-radius:12px;text-decoration:none;font-size:13px;font-weight:bold;transition:.25s}
+.primary{background:linear-gradient(110deg,#a855f7,#d45bff);color:white;box-shadow:0 0 35px #a855f733}
+.secondary{border:1px solid #ffffff30;color:white}
+.btn:hover{transform:translateY(-4px);box-shadow:0 8px 35px #a855f744}
+section{padding:65px 8%}
+.section-label{color:var(--pink);font-size:11px;letter-spacing:4px;margin-bottom:15px}
+h2{font-size:clamp(27px,5vw,43px);margin-bottom:18px}
+.about{max-width:750px;margin:auto;text-align:center}
+.about p{color:#b9afc5;line-height:1.9}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:35px}
+.card{padding:28px 23px;border:1px solid #ffffff13;border-radius:18px;background:linear-gradient(145deg,#ffffff0a,#ffffff03);transition:.3s}
+.card:hover{border-color:#bc70ff88;transform:translateY(-5px)}
+.card .number{font-size:30px;margin-bottom:20px}
+.card h3{font-size:18px;margin-bottom:10px}
+.card p{color:#a99bb8;font-size:13px;line-height:1.7}
+.socials{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
+footer{text-align:center;padding:30px 15px;color:#766881;border-top:1px solid #ffffff12;font-size:12px}
+footer b{color:#d4a1ff}
+max-width:650px{nav{padding:20px 5%}nav a{margin-left:10px;font-size:11px}.cards{grid-template-columns:1fr}section{padding:50px 6%}h1{letter-spacing:-3px}.hero{min-height:72vh}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">FUNN<span>LORN</span></div>
+  <div>
+    <a href="#about">ОБО МНЕ</a>
+    <a href="#social">СОЦСЕТИ</a>
+  </div>
+</nav>
+
+<main>
+  <header class="hero">
+    <div class="tag">OFFICIAL WEBSITE · EST. FUNNLORN</div>
+    <h1>FUNNLORN</h1>
+    <p>Не пытаюсь быть кем-то другим.
+Моя жизнь, мои правила, моя история.</p>
+    <div class="buttons">
+      <a class="btn primary" href="https://www.twitch.tv/funnlorn1" target="_blank" rel="noopener">СМОТРЕТЬ СТРИМЫ ↗</a>
+      <a class="btn secondary" href="#about">УЗНАТЬ БОЛЬШЕ ↓</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="about">
+      <div class="section-label">01 / ABOUT ME</div>
+      <h2>Добро пожаловать
+в мой мир.</h2>
+      <p>Я Funnlorn — стример и автор своего пути.
+      Здесь моя жизнь, мысли, эфиры и всё, что
+funnlorn1 - Twitch
+www.twitch.tv
+
+
+я создаю.
+      Это только начало.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="number">◉</div>
+        <h3>Стримы</h3>
+        <p>Живое общение, истории, музыка и неожиданные моменты.</p>
+      </article>
+      <article class="card">
+        <div class="number">✳</div>
+        <h3>Моя жизнь</h3>
+        <p>Настоящие эмоции, события и путь к большим целям.</p>
+      </article>
+      <article class="card">
+        <div class="number">↗</div>
+        <h3>Мои амбиции</h3>
+        <p>Создавать своё, развиваться и не останавливаться на достигнутом.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="social">
+    <div class="about">
+      <div class="section-label">02 / FIND ME</div>
+      <h2>Остаёмся на связи.</h2>
+      <p>Выбирай платформу и присоединяйся к моей истории.</p>
+      <div class="socials">
+        <a class="btn primary" href="https://www.twitch.tv/funnlorn1" target="_blank" rel="noopener">Twitch ↗</a>
+        <a class="btn secondary" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube ↗</a>
+        <a class="btn secondary" href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok ↗</a>
+        <a class="btn secondary" href="https://donationalerts.com/r/funnlorn11" target="_blank" rel="noopener">Поддержать ♡</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 <b>FUNNLORN</b> · MADE WITH AMBITION</footer>
+</body>
+</html>
+
+
+
+
+
 
