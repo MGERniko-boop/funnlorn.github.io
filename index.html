@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -7,41 +8,290 @@
 <meta name="theme-color" content="#10051f">
 <meta name="description" content="Официальный сайт Funnlorn. Стримы, жизнь и творчество.">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--purple:#a855f7;--pink:#ed8bff;--bg:#10051f}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:white;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 15% 20%,#7025a044,transparent 45%),radial-gradient(ellipse at 85% 70%,#b32bff24,transparent 45%)}
-nav{display:flex;justify-content:space-between;align-items:center;padding:25px 8%;border-bottom:1px solid #ffffff12}
-.logo{font-size:23px;font-weight:900;letter-spacing:3px}
-.logo span{color:var(--pink)}
-nav a{color:#ddd;text-decoration:none;font-size:13px;margin-left:22px}
-nav a:hover{color:var(--pink)}
-.hero{min-height:78vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:70px 20px}
-.tag{border:1px solid #c56aff66;border-radius:30px;padding:10px 17px;color:#e3b7ff;font-size:11px;letter-spacing:3px;margin-bottom:30px}
-h1{font-size:clamp(55px,13vw,125px);font-weight:1000;letter-spacing:-5px;line-height:1;background:linear-gradient(110deg,#fff,#e7b4ff 40%,#a855f7 75%,#fff);background-size:200% auto;color:transparent;background-clip:text;-webkit-background-clip:text;animation:shine 5s linear infinite}
-@keyframes shine{to{background-position:200% center}}
-.hero p{color:#b9afc5;font-size:16px;line-height:1.8;margin:27px 0;max-width:460px}
-.buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
-.btn{padding:15px 23px;border-radius:12px;text-decoration:none;font-size:13px;font-weight:bold;transition:.25s}
-.primary{background:linear-gradient(110deg,#a855f7,#d45bff);color:white;box-shadow:0 0 35px #a855f733}
-.secondary{border:1px solid #ffffff30;color:white}
-.btn:hover{transform:translateY(-4px);box-shadow:0 8px 35px #a855f744}
-section{padding:65px 8%}
-.section-label{color:var(--pink);font-size:11px;letter-spacing:4px;margin-bottom:15px}
-h2{font-size:clamp(27px,5vw,43px);margin-bottom:18px}
-.about{max-width:750px;margin:auto;text-align:center}
-.about p{color:#b9afc5;line-height:1.9}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:35px}
-.card{padding:28px 23px;border:1px solid #ffffff13;border-radius:18px;background:linear-gradient(145deg,#ffffff0a,#ffffff03);transition:.3s}
-.card:hover{border-color:#bc70ff88;transform:translateY(-5px)}
-.card .number{font-size:30px;margin-bottom:20px}
-.card h3{font-size:18px;margin-bottom:10px}
-.card p{color:#a99bb8;font-size:13px;line-height:1.7}
-.socials{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
-footer{text-align:center;padding:30px 15px;color:#766881;border-top:1px solid #ffffff12;font-size:12px}
-footer b{color:#d4a1ff}
-max-width:650px{nav{padding:20px 5%}nav a{margin-left:10px;font-size:11px}.cards{grid-template-columns:1fr}section{padding:50px 6%}h1{letter-spacing:-3px}.hero{min-height:72vh}}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --purple: #a855f7;
+  --pink: #ed8bff;
+  --bg: #10051f;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--bg);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+body:before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 15% 20%, #7025a044, transparent 45%),
+    radial-gradient(ellipse at 85% 70%, #b32bff24, transparent 45%);
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 8%;
+  border-bottom: 1px solid #ffffff12;
+  gap: 15px;
+}
+.logo {
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  white-space: nowrap;
+}
+.logo span {
+  color: var(--pink);
+}
+nav a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 13px;
+  margin-left: 22px;
+  transition: color .2s;
+}
+nav a:hover {
+  color: var(--pink);
+}
+.hero {
+  min-height: 78vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 70px 20px;
+}
+.tag {
+  border: 1px solid #c56aff66;
+  border-radius: 30px;
+  padding: 10px 17px;
+  color: #e3b7ff;
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+}
+h1 {
+  font-size: clamp(55px, 13vw, 125px);
+  font-weight: 1000;
+  letter-spacing: -5px;
+  line-height: 1;
+  background: linear-gradient(
+    110deg, #fff, #e7b4ff 40%, #a855f7 75%, #fff
+  );
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shine 5s linear infinite;
+}
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+.hero p {
+  color: #b9afc5;
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 27px 0;
+  max-width: 460px;
+}
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 760px;
+}
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 23px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+  transition: .25s;
+  cursor: pointer;
+}
+.primary {
+  background: linear-gradient(110deg, #a855f7, #d45bff);
+  color: white;
+  box-shadow: 0 0 35px #a855f733;
+}
+.secondary {
+  border: 1px solid #ffffff30;
+  color: white;
+  background: #ffffff05;
+}
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 35px #a855f744;
+}
+/* Новые кнопки: КТО Я и МЕРЧ */
+.page-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 19px;
+}
+.page-btn {
+  min-width: 145px;
+  border: 1px solid #bd77ff66;
+  background: linear-gradient(135deg, #ffffff0a, #a855f71c);
+  color: #f3dcff;
+  box-shadow: inset 0 0 18px #a855f70a;
+}
+.page-btn:hover {
+  border-color: var(--pink);
+  background: linear-gradient(110deg, #a855f7, #d45bff);
+  color: white;
+}
+section {
+  padding: 65px 8%;
+}
+.section-label {
+  color: var(--pink);
+  font-size: 11px;
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+}
+h2 {
+  font-size: clamp(27px, 5vw, 43px);
+  margin-bottom: 18px;
+}
+.about {
+  max-width: 750px;
+  margin: auto;
+  text-align: center;
+}
+.about p {
+  color: #b9afc5;
+  line-height: 1.9;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 35px;
+}
+.card {
+  padding: 28px 23px;
+  border: 1px solid #ffffff13;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #ffffff0a, #ffffff03);
+  transition: .3s;
+}
+.card:hover {
+  border-color: #bc70ff88;
+  transform: translateY(-5px);
+}
+.card .number {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.card p {
+  color: #a99bb8;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+These are the gods of the world.</b>
+  · MADE WITH AMBITION
+</footer>
+</body>
+</html>.socials
+
+
+{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 28px;
+}
+footer {
+  text-align: center;
+  padding: 30px 15px;
+  color: #766881;
+  border-top: 1px solid #ffffff12;
+  font-size: 12px;
+  line-height: 1.8;
+}
+footer b {
+  color: #d4a1ff;
+}
+max-width: 650px {
+  nav {
+    padding: 20px 5%;
+    align-items: flex-start;
+  }
+  nav > div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  nav a {
+    margin-left: 0;
+    font-size: 11px;
+  }
+  .logo {
+    font-size: 19px;
+    letter-spacing: 2px;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  section {
+    padding: 50px 6%;
+  }
+  h1 {
+    letter-spacing: -3px;
+  }
+  .hero {
+    min-height: 72vh;
+    padding: 60px 16px;
+  }
+  .tag {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+  .hero p {
+    font-size: 14px;
+  }
+  .buttons,
+  .page-buttons {
+    width: 100%;
+    max-width: 400px;
+  }
+  .buttons .btn,
+  .page-buttons .btn {
+    flex: 1 1 145px;
+    min-width: 0;
+    padding: 14px 12px;
+    font-size: 12px;
+  }
+}
 </style>
 </head>
 <body>
@@ -52,70 +302,119 @@ max-width:650px{nav{padding:20px 5%}nav a{margin-left:10px;font-size:11px}.cards
     <a href="#social">СОЦИАЛКИ</a>
   </div>
 </nav>
-
 <main>
   <header class="hero">
     <div class="tag">OFFICIAL WEBSITE · EST. FUNNLORN</div>
     <h1>FUNNLORN</h1>
-    <p>История всегда помнит тех кто 
-    выходил за рамки 
-    АДЕКВАТНОСТИ</p>
+    <p>
+      История всегда помнит тех, кто
+
+      выходил за рамки
+
+      АДЕКВАТНОСТИ
+    </p>
     <div class="buttons">
-      <a class="btn primary" href="https://www.twitch.tv/funnlorn1" target="_blank" rel="noopener">СМОТРЕТЬ СТРИМЫ &#128128;</a>
-      <a class="btn secondary" href="#about">УЗНАТЬ БОЛЬШЕ ⇔</a>
+      <a class="btn primary"
+         href="https://www.twitch.tv/funnlorn1"
+         target="_blank" rel="noopener noreferrer">
+        СМОТРЕТЬ СТРИМЫ 💀
+      </a>
+      <a class="btn secondary" href="#about">
+        УЗНАТЬ БОЛЬШЕ ⇔
+      </a>
+    </div>
+    <!-- ПЕРЕХОДЫ НА ОТДЕЛЬНЫЕ СТРАНИЦЫ -->
+    <div class="page-buttons">
+      <a class="btn page-btn" href="bio.html">
+        КТО Я ↗
+      </a>
+      <a class="btn page-btn" href="merch.html">
+        МЕРЧ ↗
+      </a>
     </div>
   </header>
-
   <section id="about">
     <div class="about">
       <div class="section-label">01 / ABOUT ME</div>
       <h2>Добро пожаловать
 в мой лор.</h2>
-      <p>Я Funnlorn — стример и автор своего пути.
-      Здесь моя жизнь, мысли, эфиры и всё, что
-я создаю.
-     this is just the beginning </p>
+      <p>
+        Я Funnlorn — стример и автор своего пути.
+        Здесь моя жизнь, мысли, эфиры и всё, что
+        я создаю.
+
+        this is just the beginning
+      </p>
     </div>
     <div class="cards">
       <article class="card">
         <div class="number">◉</div>
         <h3>Стримы крутые</h3>
-        <p>Живое общение, истории, музыка и неожиданные моменты и АФК.</p>
+        <p>
+          Живое общение, истории, музыка,
+          неожиданные моменты и АФК.
+        </p>
       </article>
       <article class="card">
         <div class="number">✳</div>
         <h3>итс май лайф</h3>
-     <rgb(255, 105, 180)>   <p>Настоящие эмоции, события и путь к большим целям.</p>
+        <p>
+          Настоящие эмоции, события и путь
+          к большим целям.
+        </p>
       </article>
       <article class="card">
         <div class="number">↗</div>
         <h3>Мои амбиции</h3>
-        <p>Создавать своё, развиваться и не останавливаться на достигнутом, реп, безумие е е е е.</p>
+        <p>
+          Создавать своё, развиваться и не
+          останавливаться на достигнутом.
+          Реп, безумие е е е е.
+        </p>
       </article>
     </div>
   </section>
-
   <section id="social">
     <div class="about">
       <div class="section-label">02 / FIND ME</div>
       <h2>связь брад.</h2>
-      <p>Выбирай платформу и присоединяйся к моей истории.</p>
+      <p>
+        Выбирай платформу и присоединяйся к моей истории.
+      </p>
       <div class="socials">
-        <a class="btn primary" href="https://www.twitch.tv/funnlorn1" target="_blank" rel="noopener">Twitch ↗</a>
-        <a class="btn secondary" href="https://www.youtube.com/@funnlorn1?si=TkVx3C1e_1u3wRQ3" target="_blank" rel="noopener">YouTube ↗</a>
-        <a class="btn secondary" href="https://www.tiktok.com/@funnlorn" target="_blank" rel="noopener">TikTok ↗</a>
-        <a class="btn secondary" href="https://donationalerts.com/r/funnlorn11" target="_blank" rel="noopener">деньга дай♡</a>
+        <a class="btn primary"
+           href="https://www.twitch.tv/funnlorn1"
+           target="_blank" rel="noopener noreferrer">
+          Twitch ↗
+        </a>
+        <a class="btn secondary"
+           href="https://www.youtube.com/@funnlorn1?si=TkVx3C1e_1u3wRQ3"
+           target="_blank" rel="noopener noreferrer">
+          YouTube ↗
+        </a>
+        <a class="btn secondary"
+           href="https://www.tiktok.com/@funnlorn"
+           target="_blank" rel="noopener noreferrer">
+          TikTok ↗
+          </a>
+        <a class="btn secondary"
+           href="https://www.tiktok.com/@funnlorn"
+           target="_blank" rel="noopener noreferrer">
+          TikTok ↗</a>
+        <a class="btn secondary"
+           href="https://t.me/funnlorn"
+           target="_blank" rel="noopener noreferrer">
+          ТГК тык
+        </a>
+        <a class="btn secondary"
+           href="https://donationalerts.com/r/funnlorn11"
+           target="_blank" rel="noopener noreferrer">
+          деньга дай♡
+        </a>
       </div>
     </div>
   </section>
 </main>
-
-<footer>© 2026-∞ <b>FUNNLORN&ARNISIZHKA These are the gods of the world.</b> · MADE WITH AMBITION</footer>
-</body>
-</html>
-
-
-
-
-
-
+<footer>
+  © 2026-∞
+  <b>FUNNLORN & ARNISIZHKA —
