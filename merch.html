@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#09090c">
+  <meta name="description" content="Funnlorn Merch — официальный мерч Funnlorn.">
+  <title>Funnlorn — Merch</title>
+  <style>
+    :root {
+      --bg: #09090c;
+      --card: #121218;
+      --card-hover: #191720;
+      --purple: #8b5cf6;
+      --purple-light: #b69aff;
+      --text: #f5f3fa;
+      --muted: #9793a3;
+      --border: rgba(255,255,255,0.09);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(100,50,170,0.16), transparent 42%),
+        var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Arial, sans-serif;
+      min-height: 100vh;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    button {
+      font: inherit;
+    }
+    .container {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+    header {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+    .logo span {
+      color: var(--purple-light);
+    }
+    .back-link {
+      color: #c7c2d3;
+      font-size: 13px;
+      transition: color .2s;
+    }
+    .back-link:hover {
+      color: white;
+    }
+    .hero {
+      padding: 84px 0 54px;
+      text-align: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 13px;
+      border: 1px solid rgba(182,154,255,.24);
+      border-radius: 100px;
+      background: rgba(139,92,246,.08);
+      color: var(--purple-light);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--purple-light);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--purple);
+    }
+    h1 {
+      margin-top: 23px;
+      font-size: clamp(46px, 9vw, 94px);
+      line-height: .95;
+      letter-spacing: -5px;
+      font-weight: 950;
+    }
+    h1 span {
+      display: block;
+      color: transparent;
+      background: linear-gradient(100deg, #fff 5%, #b69aff 55%, #7850d9 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+    .hero-description {
+      max-width: 440px;
+      margin: 22px auto 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin: 16px 0 25px;
+    }
+    .section-heading h2 {
+      font-size: 26px;
+      letter-spacing: -1px;
+    }
+    .section-heading p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      padding-bottom: 90px;
+    }
+    .product-card {
+      overflow: hidden;
+      background: linear-gradient(145deg, #17151d, #101014 75%);
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      transition: transform .25s, border-color .25s;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(182,154,255,.4);
+    }
+    .product-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      aspect-ratio: 4 / 4.5;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 50% 45%, rgba(139,92,246,.16), transparent 65%),
+        #15141a;
+    }
+    .product-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s;
+    }
+    .product-card
+
+
+er .product-image img {
+      transform: scale(1.035);
+    }
+    .image-placeholder {
+      padding: 20px;
+      color: #777184;
+      font-size: 12px;
+      line-height: 1.8;
+      text-align: center;
+    }
+    .image-placeholder strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #b69aff;
+      font-size: 19px;
+      letter-spacing: 3px;
+    }
+    .product-info {
+      padding: 19px;
+    }
+    .product-category {
+      color: var(--purple-light);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+    .product-info h3 {
+      margin-top: 8px;
+      font-size: 19px;
+      font-weight: 750;
+    }
+    .product-description {
+      min-height: 34px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .price {
+      font-size: 19px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .buy-button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 42px;
+      padding: 0 17px;
+      border: 1px solid rgba(182,154,255,.4);
+      border-radius: 9px;
+      background: var(--purple);
+      color: white;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    .buy-button:hover {
+      background: #7544db;
+      transform: translateY(-1px);
+    }
+    .order-note {
+      margin: -50px auto 75px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+      text-align: center;
+    }
+    footer {
+      padding: 25px 0 35px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .footer-brand {
+      color: white;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+    /* Окно выбора мессенджера */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background: rgba(0,0,0,.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .modal.open {
+      display: flex;
+    }
+    .modal-content {
+      position: relative;
+      width: 100%;
+      max-width: 390px;
+      padding: 30px;
+      border: 1px solid rgba(182,154,255,.25);
+      border-radius: 20px;
+      background:
+        radial-gradient(ellipse at top, rgba(139,92,246,.15), transparent 60%),
+        #121116;
+      box-shadow: 0 25px 100px rgba(0,0,0,.6);
+      animation: appear .2s ease-out;
+    }
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(10px) scale(.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 17px;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: #1d1b24;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .modal-label {
+      color: var(--purple-light);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .modal-content h2 {
+      margin-top: 12px;
+      font-size: 29px;
+      letter-spacing: -1px;
+    }
+    .selected-product {
+      margin: 12px 0 23px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .contact-options {
+      display: grid;
+      gap: 10px;
+    }
+    .contact-button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      min-height: 54px;
+      padding: 0 16px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: #1a1821;
+      color: white;
+      font-size: 14p
+
+
+"product-description">
+              Футболка с минималистичным брендингом.
+            </p>
+            <div class="product-bottom">
+              <div class="price">Уточнить цену</div>
+              <button class="buy-button"
+                onclick="openOrder('Funnlorn T-Shirt')">
+                Купить ↗
+              </button>
+            </div>
+          </div>
+        </article>
+        <!-- ТОВАР 3 -->
+        <article class="product-card">
+          <div class="product-image">
+            <!-- Фото кепки:
+            <img src="images/cap.jpg" alt="Кепка Funnlorn">
+            -->
+            <div class="image-placeholder">
+              <strong>F.</strong>
+              ФОТО КЕПКИ
+ДОБАВИШЬ ПОЗЖЕ
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Accessories</div>
+            <h3>Funnlorn Cap</h3>
+            <p class="product-description">
+              Аксессуар, который завершает образ.
+            </p>
+            <div class="product-bottom">
+              <div class="price">Уточнить цену</div>
+              <button class="buy-button"
+                onclick="openOrder('Funnlorn Cap')">
+                Купить ↗
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+    <p class="order-note container">
+      Есть вопросы по размерам, наличию или доставке?
+
+      Нажми «Купить» и напиши нам удобным способом.
+    </p>
+  </main>
+  <footer class="container">
+    <a href="index.html" class="footer-brand">FUNNLORN.</a>
+    <span>© <span id="year"></span> Funnlorn. All rights reserved.</span>
+  </footer>
+  <!-- ОКНО ВЫБОРА СПОСОБА СВЯЗИ -->
+  <div class="modal" id="orderModal"
+       role="dialog" aria-modal="true"
+       aria-labelledby="modalTitle"
+       onclick="if(event.target === this) closeOrder()">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeOrder()"
+              aria-label="Закрыть">×</button>
+      <div class="modal-label">Funnlorn customer service</div>
+      <h2 id="modalTitle">Оформить заказ</h2>
+      <p class="selected-product">
+        Товар: <strong id="selectedProduct"
+        style="color:white"></strong>
+
+        Выбери, где тебе удобнее написать.
+      </p>
+      <div class="contact-options">
+        <a class="contact-button"
+           id="telegramLink"
+           href="https://t.me/forever_gt"
+           target="_blank" rel="noopener noreferrer">
+          <span>Telegram</span><span class="arrow">↗</span>
+        </a>
+        <a class="contact-button"
+           id="instagramLink"
+           href="https://www.instagram.com/funnlorn1/"
+           target="_blank" rel="noopener noreferrer">
+          <span>Instagram</span><span class="arrow">↗</span>
+        </a>
+        <button class="contact-button disabled"
+                id="maxButton"
+                type="button"
+                disabled
+                title="Ссылка пока не добавлена">
+          <span>MAX — скоро</span><span>—</span>
+        </button>
+      </div>
+      <p class="modal-hint">
+        После перехода укажи название товара,
+        чтобы мы быстрее обработали заказ.
+      </p>
+    </div>
+  </div>
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+    const modal = document.getElementById("orderModal");
+    const selectedProduct = document.getElementById("selectedProduct");
+    function openOrder(productName) {
+      selectedProduct.textContent = productName;
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeOrder() {
+      modal.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closeOrder();
+      }
+    });
+  </script>
+</body>
+</html>:hov
+Forever
+Forever
+t.me
+
+
+x;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+    }
+    a.contact-button:hover {
+      background: #262032;
+      border-color: rgba(182,154,255,.45);
+    }
+    .contact-button .arrow {
+      color: var(--purple-light);
+      font-size: 19px;
+    }
+    .contact-button.disabled {
+      color: #77727f;
+      cursor: not-allowed;
+      opacity: .6;
+    }
+    .modal-hint {
+      margin-top: 17px;
+      color: #817b8c;
+      font-size: 10px;
+      line-height: 1.7;
+      text-align: center;
+    }
+    max-width: 760px {
+      .container {
+        width: calc(100% - 30px);
+      }
+      header {
+        height: 65px;
+      }
+      .hero {
+        padding: 65px 0 42px;
+      }
+      h1 {
+        letter-spacing: -2.5px;
+      }
+      .hero-description {
+        max-width: 340px;
+        font-size: 13px;
+      }
+      .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        padding-bottom: 75px;
+      }
+      .product-info {
+        padding: 13px;
+      }
+      .product-info h3 {
+        font-size: 15px;
+      }
+      .product-description {
+        font-size: 11px;
+      }
+      .product-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .buy-button {
+        width: 100%;
+      }
+      .price {
+        font-size: 17px;
+      }
+      .section-heading h2 {
+        font-size: 22px;
+      }
+      .section-heading p {
+        max-width: 120px;
+        text-align: right;
+        line-height: 1.5;
+      }
+      .order-note {
+        margin-top: -40px;
+      }
+    }
+    max-width: 360px {
+      .products {
+        grid-template-columns: 1fr;
+      }
+      .product-bottom {
+        align-items: center;
+        flex-direction: row;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <a href="index.html" class="logo">FUNNLORN<span>.</span></a>
+    <a href="index.html" class="back-link">← На главную</a>
+  </header>
+  <main>
+    <section class="hero container">
+      <div class="eyebrow">Official merchandise</div>
+      <h1>WEAR YOUR
+<span>IDENTITY.</span></h1>
+      <p class="hero-description">
+        Funnlorn — больше, чем имя.
+        Это стиль, характер и собственная история.
+        Выбирай свой предмет из коллекции.
+      </p>
+    </section>
+    <section class="container" id="products">
+      <div class="section-heading">
+        <h2>Коллекция<span style="color:#b69aff">.</span></h2>
+        <p>Официальный мерч FUNNLORN</p>
+      </div>
+      <div class="products">
+        <!-- ТОВАР 1: замени фото, название и цену -->
+        <article class="product-card">
+          <div class="product-image">
+            <!-- Когда загрузишь фото, замени этот блок на:
+            <img src="images/hoodie.jpg" alt="Худи Funnlorn">
+            -->
+            <div class="image-placeholder">
+              <strong>F.</strong>
+              ФОТО ХУДИ
+ДОБАВИШЬ ПОЗЖЕ
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Essential collection</div>
+            <h3>Funnlorn Hoodie</h3>
+            <p class="product-description">
+              Премиальное худи с фирменным дизайном.
+            </p>
+            <div class="product-bottom">
+              <div class="price">Уточнить цену</div>
+              <button class="buy-button"
+                onclick="openOrder('Funnlorn Hoodie')">
+                Купить ↗
+              </button>
+            </div>
+          </div>
+        </article>
+        <!-- ТОВАР 2 -->
+        <article class="product-card">
+          <div class="product-image">
+            <!-- Фото футболки:
+            <img src="images/tshirt.jpg" alt="Футболка Funnlorn">
+            -->
+            <div class="image-placeholder">
+              <strong>F.</strong>
+              ФОТО ФУТБОЛКИ
+ДОБАВИШЬ ПОЗЖЕ
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Essential collection</div>
+            <h3>Funnlorn T-Shirt</h3>
+            <p class
