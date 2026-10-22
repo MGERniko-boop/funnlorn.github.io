@@ -1,656 +1,1192 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f52dba">
-  <meta name="description" content="Биография Funnlorn — история Николая, стриминг, творчество и личный бренд.">
-  <title>Funnlorn — Биография</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+e-item {
+            display: grid;
+            grid-template-columns: 45px 1fr;
+            gap: 16px;
+            align-items: start;
+            padding: 22px;
+        }
 
-    html {
-      scroll-behavior: smooth;
-    }
+        .timeline-icon {
+            width: 43px;
+            height: 43px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            background: rgba(255, 114, 210, 0.12);
+            font-size: 20px;
+        }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: #fff;
-      background:
-        radial-gradient(ellipse at 10% 10%, #ff69d4 0%, transparent 38%),
-        radial-gradient(ellipse at 90% 45%, #9b72ff 0%, transparent 42%),
-        linear-gradient(145deg, #f52dba, #a52aff 55%, #655dff);
-      background-attachment: fixed;
-      line-height: 1.75;
-      min-height: 100vh;
-    }
+        .timeline-item h3 {
+            margin-bottom: 9px;
+            font-size: 16px;
+            font-weight: 900;
+            text-shadow: 0 0 10px rgba(255, 114, 210, 0.25);
+        }
 
-    a {
-      color: #a9f4ff;
-      text-decoration: none;
-    }
+        .timeline-item p {
+            color: #e6d5f4;
+            font-size: 13px;
+            line-height: 1.9;
+            text-shadow: 0 1px 5px rgba(15, 0, 30, 0.55);
+        }
 
-    a:hover {
-      text-decoration: underline;
-    }
+        /* ФИНАЛ */
 
-    header {
-      padding: 25px 20px;
-      border-bottom: 1px solid rgba(255,255,255,.3);
-      background: rgba(115, 18, 148, .18);
-      backdrop-filter: blur(12px);
-    }
+        .finale {
+            padding: 70px 0 95px;
+            text-align: center;
+        }
 
-    .header-inner {
-      max-width: 1100px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
+        .finale-emoji {
+            display: block;
+            margin-bottom: 20px;
+            font-size: 40px;
+            animation: gentleBounce 3s ease-in-out infinite;
+        }
 
-    .logo {
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: -1px;
-      color: white;
-    }
+        @keyframes gentleBounce {
+            0%, 100% {
+                transform: translateY(0) rotate(-3deg);
+            }
 
-    nav {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      font-size: 14px;
-      font-weight: bold;
-    }
+            50% {
+                transform: translateY(-8px) rotate(3deg);
+            }
+        }
 
-    nav a {
-      color: white;
-      opacity: .9;
-    }
+        .finale h2 {
+            font-size: clamp(35px, 8vw, 72px);
+            font-weight: 900;
+            letter-spacing: 3px;
+            background: linear-gradient(
+                100deg,
+                #ffffff,
+                #ff9cde,
+                #cba4ff,
+                #9ce7ff
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(
+                0 0 18px rgba(255, 114, 210, 0.35)
+            );
+        }
 
-    main {
-      max-width: 1100px;
-      margin: 35px auto;
-      padding: 0 20px;
-    }
+        .finale p {
+            max-width: 560px;
+            margin: 22px auto 0;
+            color: #e7d6f6;
+            font-size: 14px;
+            line-height: 1.9;
+            text-shadow: 0 2px 7px rgba(15, 0, 30, 0.65);
+        }
 
-    .page-title {
-      font-size: clamp(34px, 7vw, 58px);
-      line-height: 1.1;
-      letter-spacing: -2px;
-      margin-bottom: 12px;
-    }
+        .finale .signature {
+            margin-top: 26px;
+            color: var(--pink-light);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
 
-    .subtitle {
-      color: #f0eaff;
-      font-size: 16px;
-      margin-bottom: 28px;
-    }
+        /* ПОЛОСА ПРОКРУТКИ */
 
-    .intro {
-      padding: 22px 0;
-      border-top: 1px solid rgba(255,255,255,.45);
-      border-bottom: 1px solid rgba(255,255,255,.45);
-      margin-bottom: 30px;
-      font-size: 17px;
-    }
+        #reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(
+                90deg,
+                #ff6bcf,
+                #bf72ff,
+                #8be6ff
+            );
+            box-shadow: 0 0 12px rgba(255, 114, 210, 0.7);
+        }
 
-    .layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 285px;
-      gap: 38px;
-      align-items: start;
-    }
+        /* ПОЯВЛЕНИЕ ПРИ ПРОКРУТКЕ */
 
-    article h2 {
-      font-size: 25px;
-      margin: 30px 0 12px;
-      padding-bottom: 7px;
-      border-bottom: 1px solid rgba(255,255,255,.45);
-      scroll-margin-top: 20px;
-    }
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition:
+                opacity 0.75s ease,
+                transform 0.75s ease;
+        }
 
-    article h2:first-child {
-      margin-top: 0;
-    }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    article p {
-      margin: 12px 0;
-    }
+        /* ПОДВАЛ */
 
-    .contents {
-      margin: 20px 0 30px;
-      padding: 18px 0;
-      border-top: 1px solid rgba(255,255,255,.4);
-      border-bottom: 1px solid rgba(255,255,255,.4);
-    }
+        footer {
+            padding: 25px 18px 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(18, 7, 32, 0.25);
+            text-align: center;
+        }
 
-    .contents h3 {
-      font-size: 19px;
-      margin-bottom: 10px;
-    }
+        footer p {
+            color: #c7aedc;
+            font-size: 11px;
+            line-height: 1.9;
+        }
 
-    .contents ol {
-      padding-left: 25px;
-    }
+        footer strong {
+            color: var(--pink-light);
+            letter-spacing: 1px;
+        }
 
-    .contents li {
-      padding: 3px 0;
-    }
+        /* МОБИЛЬНЫЕ УСТРОЙСТВА */
 
-    .infobox {
-      border-top: 2px solid rgba(255,255,255,.7);
-      border-bottom: 2px solid rgba(255,255,255,.7);
-      padding: 18px 0;
-      background: rgba(255,255,255,.07);
-    }
+        max-width: 700px {
+            .container {
+                width: min(100% - 28px, 540px);
+            }
 
-    .infobox-title {
-      font-size: 23px;
-      font-weight: 900;
-      text-align: center;
-      overflow-wrap: anywhere;
-      margin-bottom: 12px;
-    }
+            .topbar-inner {
+                min-height: 62px;
+            }
 
-    .avatar {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      border: 1px solid rgba(255,255,255,.5);
-      background: linear-gradient(135deg, #ff7bd9, #9a67ff, #8ceeff);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 58px;
-      font-weight: 900;
-      letter-spacing: -4px;
-      color: white;
-      text-shadow: 0 4px 25px rgba(70,0,100,.3);
-      margin-bottom: 8px;
-    }
+            .logo {
+                font-size: 17px;
+            }
 
-    .photo-note {
-      text-align: center;
-      font-size: 12px;
-      opacity: .85;
-      margin-bottom: 15px;
-    }
+            .home-link {
+                padding: 10px 12px;
+                font-size: 11px;
+            }
 
-    .info-row {
-      display: grid;
-      grid-template-columns: 105px 1fr;
-      gap: 10px;
-      padding: 8px 0;
-      border-top: 1px solid rgba(255,255,255,.2);
-      font-size: 14px;
-      overflow-wrap: anywhere
+            .hero {
+                min-height: auto;
+                padding: 90px 0 70px;
+            }
 
 
-ентирует с оформлением,
-        идеями для видео и собственным сайтом. Для него творчество —
-        это не только готовый результат, но и постоянный процесс
-        поиска новых решений.
-      </p>
+>
 
-      <h2 id="brand">Личный бренд и проекты</h2>
-      <p>
-        Funnlorn стремится превратить свой псевдоним в узнаваемый
-        бренд. Визуальная идентичность проекта строится вокруг
-        ярких цветов, выразительной подачи и сочетания
-        интернет-культуры с эстетикой современной уличной моды.
-      </p>
-      <p>
-        Среди направлений, которые Николай развивает или
-        рассматривает, — собственный сайт, магазин гаджетов
-        и аксессуаров Gadget Glam, а также идея энергетического
-        напитка под названием <strong>energylorn</strong>.
-      </p>
-      <p>
-        Эти проекты отражают интерес Николая к созданию не только
-        контента, но и самостоятельных продуктов, которые могут
-        существовать за пределами социальных сетей.
-      </p>
+                    <div class="glass toc">
 
-      <h2 id="future">Планы и взгляды</h2>
-      <p>
-        Funnlorn хочет развивать творчество, расширять аудиторию
-        и постепенно переходить от небольших начинаний к более
-        серьёзным проектам. Среди его целей — улучшение качества
-        контента, развитие личного бренда и реализация собственных
-        бизнес-идей.
-      </p>
-      <p>
-        Его путь ещё продолжается. Важная часть этой истории —
-        самостоятельность, готовность пробовать новое и желание
-        создавать что-то своё, даже если начинать приходится
-        с минимальными ресурсами.
-      </p>
+                        <div class="toc-title">
+                            📖 Содержание
+                        </div>
 
-      <div class="quote">
-        Большие проекты начинаются не с идеальных условий,
-        а с решения сделать первый шаг.
-      </div>
+                        <ol class="toc-list">
 
-      <h2>Ссылки</h2>
-      <p>Следить за творчеством Funnlorn можно на платформах:</p>
-      <div class="socials">
-        <a href="https://www.twitch.tv/funnlorn1" target="_blank" rel="noopener">Twitch</a>
-        <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
-        <a href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok</a>
-      </div>
+                            <li>
+                                <a href="#about">
+                                    <span class="toc-number">01</span>
+                                    Кто такой FUNNLORN?
+                                </a>
+                            </li>
 
-      <a class="back-link" href="index.html">← Вернуться на главную</a>
-    </article>
+                            <li>
+                                <a href="#nickname">
+                                    <span class="toc-number">02</span>
+                                    Откуда взялся ник?
+                                </a>
+                            </li>
 
-    <aside class="infobox">
-      <div class="infobox-title">Funnlorn</div>
+                            <li>
+                                <a href="#beginning">
+                                    <span class="toc-number">03</span>
+                                    С чего всё началось
+                                </a>
+                            </li>
 
-      <div class="avatar">F</div>
-      <div class="photo-note">
-        Здесь можно разместить фотографию автора
-      </div>
+                            <li>
+                                <a href="#personality">
+                                    <span class="toc-number">04</span>
+                                    Какой я на самом деле
+                                </a>
+                            </li>
 
-      <div class="info-row">
-        <div class="info-label">Имя</div>
-        <div>Николай</div>
-      </div>
+                            <li>
+                                <a href="#money">
+                                    <span class="toc-number">05</span>
+                                    Деньги и амбиции
+                                </a>
+                            </li>
 
-      <div class="info-row">
-        <div class="info-label">Псевдоним</div>
-        <div>Funnlorn</div>
-      </div>
+                            <li>
+                                <a href="#values">
+                                    <span class="toc-number">06</span>
+                                    Что действительно важно
+                                </a>
+                            </li>
 
-      <div class="info-row">
-        <div class="info-label">Деятельность</div>
-        <div>Стриминг, создание контента, развитие личного бренда</div>
-      </div>
+                            <li>
+                                <a href="#failures">
+                                    <span class="toc-number">07</span>
+                                    Неудачи и опыт
+                                </a>
+                            </li>
 
-      <div class="info-row">
-        <div class="info-label">Начало</div>
-        <div>Около 2026 года</div>
-      </div>
+                            <li>
+                                <a href="#philosophy">
+                                    <span class="toc-number">08</span>
+                                    Моя философия
+                                </a>
+                            </li>
 
-      <div class="info-row">
-        <div class="info-label">Платформы</div>
-        <div>Twitch, YouTube, TikTok</div>
-      </div>
+                            <li>
+                                <a href="#principles">
+                                    <span class="toc-number">09</span>
+                                    Правила FUNNLORN
+                                </a>
+                            </li>
 
-      <div class="info-row">
-        <div class="info-label">Проекты</div>
-        <div>Funnlorn, Gadget Glam, energylorn</div>
-      </div>
+                            <li>
+                                <a href="#finale">
+                                    <span class="toc-number">10</span>
+                                    Путь продолжается
+                                </a>
+                            </li>
 
-      <div class="info-row">
-        <div class="info-label">Сайт</div>
-        <div><a href="index.html">Официальная страница</a></div>
-      </div>
-    </aside>
-  </div>
-</main>
+                        </ol>
 
-<footer>
-  © <span id="year"></span> Funnlorn · Личная страница автора
-</footer>
+                    </div>
 
-<script>
-  document.getElementById("year").textContent =
-    new Date().getFullYear();
-</script>
+                </section>
 
-</body>
-</html>;
+                <!-- КТО ТАКОЙ FUNNLORN -->
+
+                <section class="section reveal" id="about">
+
+                    <div class="section-heading">
+                        <div class="section-kicker">01 / Знакомство</div>
+                        <h2>Кто такой <span class="accent">FUNNLORN?</span></h2>
+                    </div>
+
+                    <div class="glass text-card">
+
+                        <p>
+                            Кто-то знает меня как FUNNLORN, кто-то вообще
+                            впервые видит этот ник. Да и, если честно,
+                            не так важно, кто что обо мне знает.
+                        </p>
+
+                        <p>
+                            Я не пытаюсь понравиться каждому, не бегаю
+                            за чужим одобрением и уж точно не собираюсь
+                            жить по чужим правилам.
+                        </p>
+
+                        <p>
 
 
-}
+.hero h1 {
+                letter-spacing: -2px;
+            }
 
-    .info-label {
-      font-weight: bold;
-      color: #dffaff;
-    }
+            .hero-description {
+                font-size: 13px;
+            }
 
-    .quote {
-      margin: 22px 0;
-      padding: 4px 0 4px 18px;
-      border-left: 4px solid #a9f4ff;
-      font-size: 18px;
-      font-style: italic;
-    }
+            .section {
+                padding: 27px 0;
+            }
 
-    .socials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 15px;
-    }
+            .toc-list {
+                grid-template-columns: 1fr;
+            }
 
-    .socials a {
-      display: inline-block;
-      color: white;
-      border: 1px solid rgba(255,255,255,.55);
-      padding: 8px 14px;
-      border-radius: 30px;
-      background: rgba(255,255,255,.1);
-      font-size: 14px;
-    }
+            .facts-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+            }
 
-    .back-link {
-      display: inline-block;
-      margin: 30px 0 10px;
-      color: white;
-      font-weight: bold;
-    }
+            .fact-card {
+                min-height: 130px;
+                padding: 17px;
+            }
 
-    footer {
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,.3);
-      padding: 25px 20px;
-      font-size: 13px;
-      color: #f5eaff;
-    }
+            .fact-value {
+                font-size: 13px;
+            }
 
-    max-width: 760px {
-      header {
-        padding: 18px;
-      }
+            .text-card p {
+                font-size: 13px;
+                line-height: 1.95;
+            }
 
-      .layout {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
+            .timeline-item {
+                grid-template-columns: 37px 1fr;
+                gap: 12px;
+                padding: 17px;
+            }
 
-      .infobox {
-        grid-row: 1;
-      }
-    .avatar {
-        max-width: 250px;
-        margin-left: auto;
-        margin-right: auto;
-      }
+            .timeline-icon {
+                width: 37px;
+                height: 37px;
+                font-size: 17px;
+            }
 
-      main {
-        margin-top: 25px;
-        padding: 0 18px;
-      }
+            .timeline-item h3 {
+                font-size: 14px;
+            }
 
-      nav {
-        gap: 12px;
-      }
-    }
-  </style>
+            .timeline-item p {
+                font-size: 12px;
+            }
+
+            .principle {
+                padding: 16px;
+            }
+
+            .principle p {
+                font-size: 12px;
+            }
+
+            .finale {
+                padding: 55px 0 70px;
+            }
+        }
+
+        max-width: 380px {
+            .container {
+                width: calc(100% - 22px);
+            }
+
+            .hero-badges {
+                gap: 7px;
+            }
+
+            .badge {
+                padding: 9px 11px;
+                font-size: 10px;
+            }
+
+            .facts-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* УВАЖАЕМ НАСТРОЙКИ УМЕНЬШЕННОЙ АНИМАЦИИ */
+
+        prefers-reduced-motion: reduce {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
-  <div class="header-inner">
-    <a class="logo" href="index.html">FUNNLORN</a>
-    <nav>
-      <a href="index.html">Главная</a>
-      <a href="bio.html">Биография</a>
-      <a href="merch.html">Мерч</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <h1 class="page-title">Funnlorn</h1>
-  <p class="subtitle">Биография · Интернет-творчество · Личный бренд</p>
-
-  <div class="intro">
-    <strong>Funnlorn</strong> — никнейм Николая,
-    интернет-автора и стримера, который развивает собственный
-    стиль, создаёт контент и постепенно строит личный бренд.
-    Его история — это путь от первых трансляций со смартфона
-    к более масштабным идеям и собственным проектам.
-  </div>
-
-  <div class="layout">
-    <article>
-      <div class="contents">
-        <h3>Содержание</h3>
-        <ol>
-          <li><a href="#about">Общая информация</a></li>
-          <li><a href="#beginning">Начало пути</a></li>
-          <li><a href="#streaming">Стриминг и творчество</a></li>
-          <li><a href="#brand">Личный бренд и проекты</a></li>
-          <li><a href="#future">Планы и взгляды</a></li>
-        </ol>
-      </div>
+    <div id="reading-progress"></div>
+    <div id="emoji-background" aria-hidden="true"></div>
 
-      <h2 id="about">Общая информация</h2>
-      <p>
-        Николай существует в интернете под псевдонимом
-        <strong>Funnlorn</strong>. Под этим именем он развивает
-        свои социальные сети, занимается стримингом и работает
-        над узнаваемым визуальным стилем.
-      </p>
-      <p>
-        Для Funnlorn важна не только публикация контента,
-        но и создание цельного образа: от оформления страниц
-        до собственных идей, продуктов и проектов.
-      </p>
+    <div class="site">
 
-      <h2 id="beginning">Начало пути</h2>
-      <p>
-        Начало интеренет пути Funnlorn, началось в январе 2026 года. На старте у Николая не было
-        полноценной стримерской студии: он использовал смартфон
-        и доступные инструменты, чтобы проводить трансляции
-        и пробовать себя в роли автора.
-      </p>
-      <p>
-        Начало было связано с поиском своего формата, освоением
-        технических возможностей и постепенным формированием
-        собственной аудитории. Вместо ожидания идеальных условий
-        Funnlorn начал с того, что было под рукой.
-      </p>
+        <!-- ШАПКА -->
 
-      <h2 id="streaming">Стриминг и творчество</h2>
-      <p>
-        Одно из главных направлений Funnlorn — прямые эфиры.
-        Его интересует формат общения со зрителями, разговорные
-        трансляции, истории из жизни, музыка и спонтанные темы,
-        которые делают каждый эфир живым.
-      </p>
-      <p>
-        Он развивает присутствие на Twitch, YouTube и TikTok,
-        рассматривая каждую платформу как возможность
-        познакомить новых людей со своим творчеством.
-      </p>
-      <p>
-        Помимо эфиров, Николай экспериментирует с оформлением,
+        <header class="topbar">
+            <div class="container topbar-inner">
 
-        идеями для видео и собственным сайтом. Для него творчество —
+                <a href="index.html" class="logo">
+                    FUNN<span>LORN</span>
+                </a>
 
-        это не только готовый результат, но и постоянный процесс
+                <a href="index.html" class="home-link">
+                    <span>←</span>
+                    На главную
+                </a>
 
-        поиска новых решений.
+            </div>
+        </header>
 
-      </p>
+        <main>
 
-      <h2 id="brand">Личный бренд и проекты</h2>
+            <!-- ГЛАВНЫЙ ЭКРАН -->
 
-      <p>
+            <section class="hero">
+                <div class="container hero-content">
 
-        Funnlorn стремится превратить свой псевдоним в узнаваемый
+                    <div class="eyebrow">
+                        ✦ OFFICIAL BIOGRAPHY ✦
+                    </div>
 
-        бренд. Визуальная узнаваемость проекта строится вокруг
+                    <h1>FUNNLORN</h1>
 
-        ярких цветов, уникальных стилей, выразительной подачи и сочетания
+                    <div class="hero-subtitle">
+                        Путь. И это только начало.
+                    </div>
 
-        интернет-культуры с эстетикой современной уличной моды.
+                    <p class="hero-description">
+                        Не идеальный. Не всем понятный.
+                        Не собираюсь нравиться каждому.
+                        Просто человек со своими принципами,
+                        амбициями и целью, к которой я иду.
+                    </p>
 
-      </p>
+                    <div class="hero-badges">
+                        <div class="badge">🎯 Целеустремлённый</div>
+                        <div class="badge">🧠 Находчивый</div>
+                        <div class="badge">😈 Хитрый</div>
+                        <div class="badge">💸 Большие амбиции</div>
+                    </div>
 
-      <p>
+                </div>
+            </section>
 
-        Среди направлений, которые Николай развивает или
+            <div class="container">
 
-        рассматривает, — собственный сайт, twitch и youtube каналы, а также идея энергетического
+                <!-- ОГЛАВЛЕНИЕ -->
 
-        напитка под названием <strong>energylorn</strong>.
+                <section class="section reveal" id="contents"
 
-      </p>
 
-      <p>
+<p>
+                            Я не идеальный и не собираюсь таким прикидываться.
+                            Просто стараюсь оставаться собой, даже если
+                            это кому-то не нравится.
+                        </p>
 
-        Эти проекты отражают интерес Николая к созданию не только
+                    </div>
 
-        контента, но и самостоятельных продуктов, которые могут
+                </section>
 
-        существовать за пределами социальных сетей и развивать узнаваемость самого Николая.
+                <!-- ДЕНЬГИ И АМБИЦИИ -->
 
-      </p>
+                <section class="section reveal" id="money">
 
-      <h2 id="future">Планы и взгляды</h2>
+                    <div class="section-heading">
+                        <div class="section-kicker">06 / Амбиции</div>
+                        <h2>Деньги — это <span class="accent">возможности</span></h2>
+                    </div>
 
-      <p>
+                    <div class="glass text-card">
 
-        Funnlorn хочет развивать творчество, расширять аудиторию
+                        <p>
+                            Давайте без сказок о том, что деньги вообще
+                            ничего не значат.
+                        </p>
 
-        и постепенно переходить от небольших начинаний к более
+                        <p>
+                            Значат. Ещё как.
+                        </p>
 
-        серьёзным проектам. Среди его целей — улучшение качества
+                        <p>
+                            Это дом, еда, отдых, свобода выбора и возможность
+                            быстрее прийти к тому, чего хочешь. Можно
+                            добиваться своего и без больших денег, но
+                            с ними некоторые двери открываются куда быстрее.
+                        </p>
 
-        контента, развитие личного бренда и реализация собственных
+                        <p>
+                            При этом я не собираюсь делать деньги смыслом
+                            всей своей жизни.
+                        </p>
 
-        бизнес-идей.
+                        <p>
+                            <strong>Я хочу построить империю, а не просто
+                            изображать человека, у которого всё есть.</strong>
+                        </p>
 
-      </p>
+                        <p>
+                            Мне интересна узнаваемость. Хочется создать
+                            собственное имя, развить бренд и добиться
+                            чего-то действительно масштабного.
+                        </p>
 
-      <p>
+                        <p>
+                            А все подробности моих планов знать необязательно.
+                            Некоторые вещи лучше сначала осуществить,
+                            а уже потом рассказывать о них.
+                        </p>
 
-        Его путь ещё продолжается. Важная часть этой истории —
+                    </div>
 
-        самостоятельность, готовность пробовать новое и желание
+                </section>
 
-        создавать что-то своё, даже если начинать приходится
+                <!-- ГЛАВНАЯ ЦИТАТА -->
 
-        с минимальными ресурсами.
+                <section class="section reveal">
 
-      </p>
+                    <div class="glass quote">
 
-      <div class="quote">
+                        <p>
+                            Я хочу построить <span>империю</span>,
+                            а не просто изображать человека,
+                            у которого всё есть.
+                        </p>
 
-        Большие проекты начинаются не с идеальных условий,
+                        <div class="quote-caption">
+                            FUNNLORN / AMBITION
+                        </div>
 
-        а с решения сделать первый шаг.
+                    </div>
 
-      </div>
+                </section>
 
-      <h2>Ссылки</h2>
+                <!-- ЦЕННОСТИ -->
 
-      <p>Следить за творчеством Funnlorn можно на платформах:</p>
+                <section class="section reveal" id="values">
 
-      <div class="socials">
+                    <div class="section-heading">
+                        <div class="section-kicker">07 / То, что важно</div>
+                        <h2>Что действительно <span class="accent">имеет значение?</span></h2>
+                    </div>
 
-        <a href="https://www.twitch.tv/funnlorn1" target="_blank" rel="noopener">Twitch</a>
+                    <div class="glass text-card">
 
-        <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
+                        <p>
+                            Есть вещи, которые для меня стоят выше денег.
+                        </p>
 
-        <a href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+                        <p>
+                            Я не хочу менять людей на деньги. Не хочу
+                            разбрасываться обещаниями и забывать собственные
+                            слова, когда это становится неудобно.
+                        </p>
 
-      </div>
+                        <p>
+                            Если я что-то пообещал, то должен понимать
+                            ответственность за свои слова.
+                        </p>
 
-      <a class="back-link" href="index.html">← Вернуться на главную</a>
+                        <p>
+                            И нет, это не означает, что я всегда всё делаю
+                            правильно. Но я считаю, что обещания и клятвы —
+                            не просто красивые слова, которые можно
 
-    </article>
 
-    <aside class="infobox">
+, что есть.
+                        </p>
 
-      <div class="infobox-title">Funnlorn</div>
+                        <p>
+                            Не вижу смысла ждать идеальных условий,
+                            чтобы наконец начать делать то, чего хочешь.
+                        </p>
 
-      <div class="avatar">F</div>
+                    </div>
 
-      <div class="photo-note">
+                </section>
 
-        Здесь можно разместить фотографию автора
+                <!-- ФАКТЫ -->
 
-      </div>
+                <section class="section reveal" id="facts">
 
-      <div class="info-row">
+                    <div class="section-heading">
+                        <div class="section-kicker">04 / Несколько фактов</div>
+                        <h2>Немного обо <span class="accent">мне</span></h2>
+                    </div>
 
-        <div class="info-label">Имя</div>
+                    <div class="facts-grid">
 
-        <div>Николай</div>
+                        <article class="glass fact-card">
+                            <span class="fact-icon">👤</span>
+                            <div class="fact-label">Имя</div>
+                            <div class="fact-value">Николай</div>
+                        </article>
 
-      </div>
+                        <article class="glass fact-card">
+                            <span class="fact-icon">🎭</span>
+                            <div class="fact-label">Никнейм</div>
+                            <div class="fact-value">FUNNLORN</div>
+                        </article>
 
-      <div class="info-row">
+                        <article class="glass fact-card">
+                            <span class="fact-icon">🎥</span>
+                            <div class="fact-label">Направление</div>
+                            <div class="fact-value">Стриминг и блогинг</div>
+                        </article>
 
-        <div class="info-label">Псевдоним</div>
+                        <article class="glass fact-card">
+                            <span class="fact-icon">🎯</span>
+                            <div class="fact-label">Главная цель</div>
+                            <div class="fact-value">Построить империю</div>
+                        </article>
 
-        <div>Funnlorn</div>
+                        <article class="glass fact-card">
+                            <span class="fact-icon">💎</span>
+                            <div class="fact-label">Мировоззрение</div>
+                            <div class="fact-value">Деньги — инструмент</div>
+                        </article>
 
-      </div>
+                        <article class="glass fact-card">
+                            <span class="fact-icon">🚀</span>
+                            <div class="fact-label">Статус истории</div>
+                            <div class="fact-value">Продолжение следует</div>
+                        </article>
 
-      <div class="info-row">
+                    </div>
 
-        <div class="info-label">Деятельность</div>
+                </section>
 
-        <div>Стриминг, создание контента, развитие личного бренда</div>
+                <!-- ЛИЧНОСТЬ -->
 
-      </div>
+                <section class="section reveal" id="personality">
 
-      <div class="info-row">
+                    <div class="section-heading">
+                        <div class="section-kicker">05 / Без масок</div>
+                        <h2>Какой я <span class="accent">на самом деле?</span></h2>
+                    </div>
 
-        <div class="info-label">Начало</div>
+                    <div class="glass text-card">
 
-        <div>Январь 2026 года</div>
+                        <p>
+                            Я не тот человек, который постоянно кривляется
+                            на камеру ради очередного «завоза». Если мне весело —
+                            смеюсь. Если нечего сказать — могу спокойно помолчать.
+                        </p>
 
-      </div>
+                        <p>
+                            Раньше на стримах я был куда энергичнее.
+                            Сейчас стал спокойнее, иногда вообще АФК.
+                            Ну, бывает. Не могу же я круглосуточно изображать
+                            праздничный салют.
+                        </p>
 
-      <div class="info-row">
+                        <p>
+                            Я не особо переживаю о том, какое впечатление
+                            произвожу на людей. Кому-то понравлюсь,
+                            кому-то нет. Кто-то поймёт меня неправильно —
+                            тоже не конец света.
+                        </p>
 
-        <div class="info-label">Платформы</div>
+                        <p>
+                            При этом я могу поддержать разговор,
+                            выслушать человека или помочь, если он оказался
+                            в беде.
+                        </p>
 
-        <div>Twitch, YouTube, TikTok</div>
 
-      </div>
+<strong>Целеустремлённый, находчивый, хитрый.</strong>
+                            Примерно так я бы описал себя. И нет, я не
+                            собираюсь делать вид, что у меня нет недостатков.
+                            Идеальных людей вообще не существует, а строить
+                            из себя ангела — не моя тема.
+                        </p>
 
-      <div class="info-row">
+                        <p>
+                            Мне не особо важно, какое мнение обо мне сложилось.
+                            Кто-то поймёт, кто-то нет. У каждого своя голова
+                            на плечах, и переубеждать весь мир я не собираюсь.
+                        </p>
 
-        <div class="info-label">Проекты</div>
+                        <p>
+                            <strong>У каждого своя история.
+                            Моя называется «Путь».</strong>
+                        </p>
 
-        <div>Funnlorn, energylorn</div>
+                    </div>
 
-      </div>
+                </section>
 
-      <div class="info-row">
+                <!-- ИСТОРИЯ НИКА -->
 
-        <div class="info-label">Сайт</div>
+                <section class="section reveal" id="nickname">
 
-        <div><a href="index.html">Официальная страница</a></div>
+                    <div class="section-heading">
+                        <div class="section-kicker">02 / Имя в сети</div>
+                        <h2>Откуда взялся <span class="accent">FUNNLORN?</span></h2>
+                    </div>
+
+                    <div class="glass text-card">
 
-      </div>
+                        <p>
+                            Когда-то я был Forever Young.
+                            Да-да, у меня тоже была своя предыстория.
+                        </p>
 
-    </aside>
+                        <p>
+                            Однажды я начал перебирать слова на букву F,
+                            соединять разные варианты и искать что-то,
+                            что будет звучать по-своему. Так и появился FUNNLORN.
+                        </p>
 
-  </div>
+                        <p>
+                            Без великой легенды о том, как мне явился ник во сне.
+                            Просто искал — и нашёл.
+                        </p>
 
-</main>
+                        <p>
+                            А дальше уже дело за мной. Потому что придумать
+                            имя может каждый, а вот сделать так, чтобы
+                            за ним что-то стояло, — совсем другая история.
+                        </p>
 
-<footer>
+                    </div>
 
-  © <span id="year"></span> Funnlorn · Личная страница автора
+                </section>
 
-</footer>
+                <!-- НАЧАЛО ПУТИ -->
 
-<script>
+                <section class="section reveal" id="beginning">
 
-  document.getElementById("year").textContent =
+                    <div class="section-heading">
+                        <div class="section-kicker">03 / Точка старта</div>
+                        <h2>А что, если я тоже <span class="accent">смогу?</span></h2>
+                    </div>
 
-    new Date().getFullYear();
+                    <div class="glass text-card">
 
-</script>
+                        <p>
+                            Всё началось с обычной, монотонной работы.
+                            Во время неё я смотрел стримы и в какой-то
+                            момент задал себе вопрос:
+                        </p>
+
+                        <p>
+                            <strong>«А я сам так смогу?»</strong>
+                        </p>
+
+                        <p>
+                            Вот, собственно, и всё. Иногда для начала
+                            пути не нужны мотивационные фильмы, десять
+                            бизнес-книг и наставник с часами за миллион.
+                            Иногда достаточно одного вопроса, который
+                            не даёт тебе покоя.
+                        </p>
+
+                        <p>
+                            Я поставил цель и начал двигаться.
+                        </p>
+
+                        <p>
+                            Сразу ли всё получилось? Конечно нет.
+                            Да и сейчас у меня нет всего того, что хотелось
+                            бы иметь для нормального стриминга. Но меня
+                            это не остановило.
+                        </p>
+
+                        <p>
+                            Когда-нибудь оборудование будет лучше.
+                            Возможностей станет больше. А пока работаем
+                            с тем
+
+
+</p>
+
+                        <p>
+                            Можно ходить в дорогих вещах, показывать
+                            красивую жизнь и пытаться убедить всех вокруг,
+                            что ты богат. А можно не тратить силы на создание
+                            картинки для чужих глаз и заниматься тем,
+                            что действительно приносит результат.
+                        </p>
+
+                        <p>
+                            Впрочем, у каждого своё понимание успеха.
+                            Для кого-то это деньги, для кого-то — свобода,
+                            семья, любимое дело или возможность просыпаться
+                            без ощущения, что ты живёшь чужую жизнь.
+                        </p>
+
+                        <p>
+                            Для меня успех — это быть счастливым,
+                            достигать поставленных целей и иметь
+                            финансовые возможности для их реализации.
+                        </p>
+
+                        <p>
+                            И да, я считаю, что одно другому не мешает.
+                        </p>
+
+                    </div>
+
+                </section>
+
+                <!-- ПРИНЦИПЫ -->
+
+                <section class="section reveal" id="principles">
+
+                    <div class="section-heading">
+                        <div class="section-kicker">11 / Личные правила</div>
+                        <h2>Правила <span class="accent">FUNNLORN</span></h2>
+                    </div>
+
+                    <div class="principles">
+
+                        <div class="principle">
+                            <span class="principle-icon">🤝</span>
+                            <p>Держать слово.</p>
+                        </div>
+
+                        <div class="principle">
+                            <span class="principle-icon">💎</span>
+                            <p>Не нарушать обещания и клятвы.</p>
+                        </div>
+
+                        <div class="principle">
+                            <span class="principle-icon">❤️</span>
+                            <p>Не менять людей на деньги.</p>
+                        </div>
+
+                        <div class="principle">
+                            <span class="principle-icon">🧠</span>
+                            <p>Принимать ошибки как опыт.</p>
+                        </div>
+
+                        <div class="principle">
+                            <span class="principle-icon">🚀</span>
+                            <p>
+                                Не останавливаться только потому,
+                                что сейчас нет идеальных условий.
+                            </p>
+                        </div>
+
+                        <div class="principle">
+                            <span class="principle-icon">🎯</span>
+                            <p>
+                                Идти к своей цели, не пытаясь всем
+                                доказать, что ты лучше них.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ЦИТАТА -->
+
+                <section class="section reveal">
+
+                    <div class="glass quote">
+
+                        <p>
+                            История помнит тех, кто выходил
+                            за рамки <span>адекватности.</span>
+                            Остальные становились фоном.
+                        </p>
+
+                        <div class="quote-caption">
+                            FUNNLORN / PERSONAL PHILOSOPHY
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ФИНАЛ -->
+
+                <section class="finale reveal" id="finale">
+
+                    <div class="finale-emoji">💸 💎 🥹 🤣</div>
+
+                    <h2>ПУТЬ</h2>
+
+                    <p>
+                        Я не знаю, какой именно будет моя история
+                        через несколько лет.
+                    </p>
+
+
+использовать, когда тебе выгодно.
+                        </p>
+
+                        <p>
+                            Деньги можно заработать. Возможности можно
+                            создать. Но не всё в жизни покупается.
+                        </p>
+
+                        <p>
+                            <strong>И, если честно, я уже счастлив.
+                            У меня есть то, что для меня действительно дорого.</strong>
+                        </p>
+
+                        <p>
+                            А остальное — цели, к которым я продолжаю идти.
+                        </p>
+
+                    </div>
+
+                </section>
+
+                <!-- НЕУДАЧИ -->
+
+                <section class="section reveal" id="failures">
+
+                    <div class="section-heading">
+                        <div class="section-kicker">08 / Опыт</div>
+                        <h2>Неудачи? <span class="accent">Двигаемся дальше.</span></h2>
+                    </div>
+
+                    <div class="glass text-card">
+
+                        <p>
+                            Я не собираюсь рассказывать, что каждое поражение
+                            делает меня сильнее, а каждая ошибка —
+                            подарок судьбы.
+                        </p>
+
+                        <p>
+                            Иногда ошибки просто бесят. Иногда что-то
+                            не получается. Иногда приходится начинать заново.
+                        </p>
+
+                        <p>
+                            Но какой смысл стоять на месте?
+                        </p>
+
+                        <p>
+                            Принимаю это как опыт и иду дальше. Не потому,
+                            что мне никогда не бывает сложно, а потому,
+                            что я сам выбрал этот путь.
+                        </p>
+
+                        <p>
+                            И теперь мне решать, что делать дальше.
+                        </p>
+
+                    </div>
+
+                </section>
+
+                <!-- ФИЛОСОФИЯ -->
+
+                <section class="section reveal" id="philosophy">
+
+                    <div class="section-heading">
+                        <div class="section-kicker">09 / Мировоззрение</div>
+                        <h2>Немного о моей <span class="accent">философии</span></h2>
+                    </div>
+
+                    <div class="glass text-card">
+
+                        <p>
+                            Я не из тех, кто считает, что может контролировать
+                            абсолютно всё. Жизнь непредсказуема, обстоятельства
+                            меняются, планы иногда летят куда-то далеко.
+                        </p>
+
+                        <p>
+                            Моя позиция простая: я выбираю направление,
+                            иду к своей цели и принимаю то, что происходит
+                            по дороге.
+                        </p>
+
+                        <p>
+                            Что будет через три года? Посмотрим.
+                        </p>
+
+                        <p>
+                            Я не люблю заранее расписывать всю жизнь
+                            по минутам. У меня есть амбиции, есть идеи
+                            и есть ощущение, что впереди может быть
+                            что-то грандиозное.
+                        </p>
+
+                        <p>
+                            Но пока это только начало.
+                        </p>
+
+                    </div>
+
+                </section>
+
+                <!-- УСПЕХ -->
+
+                <section class="section reveal">
+
+                    <div class="section-heading">
+                        <div class="section-kicker">10 / Успех</div>
+                        <h2>А что вообще значит <span class="accent">быть успешным?</span></h2>
+                    </div>
+
+                    <div class="glass text-card">
+
+                        <p>
+                            В первую очередь — быть счастливым.
+
+
+<p>
+                        Может, всё окажется намного масштабнее,
+                        чем я сейчас представляю. Может, путь будет
+                        совершенно не таким, каким я его вижу сегодня.
+                    </p>
+
+                    <p>
+                        Но я не хочу заранее ограничивать себя тем,
+                        что окружающие считают нормальным, правильным
+                        или возможным.
+                    </p>
+
+                    <p>
+                        Меня зовут Николай. В интернете я — FUNNLORN.
+                    </p>
+
+                    <div class="signature">
+                        ПРОДОЛЖЕНИЕ СЛЕДУЕТ… ✨
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+        <!-- ПОДВАЛ -->
+
+        <footer>
+            <p>
+                <strong>FUNNLORN</strong> · OFFICIAL WEBSITE
+            </p>
+
+            <p>
+                Личная история. Собственный путь. Продолжение следует.
+            </p>
+
+            <p>
+                © 2026 FUNNLORN
+            </p>
+        </footer>
+
+    </div>
+
+    <script>
+        /* =====================================
+           ПЛАВАЮЩИЕ ЭМОДЗИ
+        ===================================== */
+
+        const emojiContainer = document.getElementById("emoji-background");
+
+        const emojis = [
+            "💸",
+            "💎",
+            "🥹",
+            "😀",
+            "🤣",
+            "🤡",
+            "✨",
+            "🤑",
+            "💜",
+            "💗",
+            "😂",
+            "🥹",
+            "💸",
+            "💎",
+            "🤡"
+        ];
+
+        const reduceMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+        const isMobile = window.matchMedia(
+            "(max-width: 700px)"
+        ).matches;
+
+        const emojiCount = reduceMotion
+            ? 0
+            : (isMobile ? 12 : 20);
+
+        for (let i = 0; i < emojiCount; i++) {
+            const emoji = document.createElement("span");
+
+            emoji.className = "floating-emoji";
+
+            emoji.textContent =
+                emojis[Math.floor(Math.random() * emojis.length)];
+
+            const left = Math.random() * 100;
+            const size = 17 + Math.random() * (isMobile ? 17 : 25);
+            const duration = 13 + Math.random() * 19;
+            const delay = -(Math.random() * duration);
+            const opacity = 0.12 + Math.random() * 0.22;
+
+            emoji.style.setProperty("--left", left + "%");
+            emoji.style.setProperty("--size", size + "px");
+            emoji.style.setProperty("--duration", duration + "s");
+            emoji.style.setProperty("--delay", delay + "s");
+            emoji.style.setProperty("--opacity", opacity);
+
+            emojiContainer.appendChild(emoji);
+        }
+
+        /* =====================================
+           ПОЯВЛЕНИЕ СЕКЦИЙ ПРИ ПРОКРУТКЕ
+        ===================================== */
+
+        const revealElements = document.querySelectorAll(".reveal");
+
+        if ("IntersectionObserver" in window && !reduceMotion) {
+            const observer = new IntersectionObserver(
+                (entries, observerInstance) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            observerInstance.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.08,
+                    rootMargin: "0px 0px -30px 0px"
+                }
+            );
+
+            revealElements.forEach((element) => {
+                observer.observe(element);
+            });
+        } else {
+            revealElements.forEach((element) => {
+                element.classList.add("visible");
+            });
+        }
+
+        /* =====================================
+           ИНДИКАТОР ПРОКРУТКИ СТРАНИЦЫ
+        ===================================== */
+
+        const progressBar = document.getEle
+
+
+mentById("reading-progress");
+
+        let scrollTicking = false;
+
+        function updateProgress() {
+            const scrollTop =
+                document.documentElement.scrollTop || window.scrollY;
+
+            const scrollHeight =
+                document.documentElement.scrollHeight -
+                document.documentElement.clientHeight;
+
+            const progress = scrollHeight > 0
+                ? (scrollTop / scrollHeight) * 100
+                : 0;
+
+            progressBar.style.width = progress + "%";
+            scrollTicking = false;
+        }
+
+        window.addEventListener(
+            "scroll",
+            () => {
+                if (!scrollTicking) {
+                    window.requestAnimationFrame(updateProgress);
+                    scrollTicking = true;
+                }
+            },
+            { passive: true }
+        );
+
+        updateProgress();
+    </script>
 
 </body>
-
 </html>
+
+
